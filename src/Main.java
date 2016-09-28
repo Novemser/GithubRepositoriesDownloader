@@ -15,6 +15,7 @@ import java.nio.channels.ReadableByteChannel;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 import java.util.Set;
 import java.util.concurrent.*;
 import java.util.regex.Matcher;
@@ -77,9 +78,6 @@ public class Main {
                         // Sleep 10 minutes
                         Thread.sleep(1000 * 60 * 10);
                     }
-//                    while (fixedThreadPool.getCompletedTaskCount() < listCnt && listCnt != 0) {
-//                        Thread.sleep(1000);
-//                    }
                 } catch (UnirestException | InterruptedException e) {
                     e.printStackTrace();
                     continue;
@@ -199,16 +197,16 @@ public class Main {
 
     }
 
-    public static void saveZipToFile(String fileName, String url) throws IOException {
-        URL website = new URL(url);
-        ReadableByteChannel rbc = Channels.newChannel(website.openStream());
-        FileOutputStream fos = new FileOutputStream(new File(fileName));
-        fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
-    }
+
 
 
     public static void main(String... args) {
-        Main main = new Main();
-        main.run(5000);
+//        Main main = new Main();
+//        main.run(5000);
+        String path = "G:/2.zip";
+        File file = new File(path);
+
+        boolean flag = file.renameTo(new File("G:/2tmp.zip"));
+        System.out.println(flag);
     }
 }
