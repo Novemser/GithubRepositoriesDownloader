@@ -1,3 +1,5 @@
+package searcher;
+
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
@@ -5,6 +7,9 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 import com.mashape.unirest.request.GetRequest;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import util.HttpHelper;
+import util.Utils;
+import worker.WorkerThread;
 
 import java.io.*;
 import java.util.Scanner;
@@ -13,11 +18,11 @@ import java.util.concurrent.*;
 /**
  * Created by Novemser on 2016/9/27.
  */
-public class SpecLanguage {
+public class SpecLanguageSearcher extends Searcher {
 
     public static void main(String... args) {
-        SpecLanguage java = new SpecLanguage("Java");
-        java.run(1000);
+        SpecLanguageSearcher java = new SpecLanguageSearcher("Java", 1000);
+        java.run();
     }
 
     private String clientId = "c3cdb3e20ce16b2fe446";
@@ -29,7 +34,9 @@ public class SpecLanguage {
     private ThreadPoolExecutor fixedThreadPool;
     private int maxActiveCnt = 500;
 
-    public SpecLanguage(String language) {
+    public SpecLanguageSearcher(String language, int maxThread) {
+        super(maxThread);
+
         initSearchUrl = "https://api.github.com/search/repositories?q=language:"
                 + language
                 + "&sort=stars&order=desc&client_id="
@@ -72,44 +79,7 @@ public class SpecLanguage {
         return flag && fg && ac;
     }
 
-    private void startListenExit(PrintWriter writer) {
-        new Thread(() -> {
-            Scanner scanner = new Scanner(System.in);
-            if (scanner.hasNext()) {
-                running = false;
-                System.err.println("Downloading stopped.");
-                Utils.logMsgWithTime(writer, "Manually stop downloading.");
-            }
-        }).start();
-    }
-
-    private void startMonitor() {
-        new Thread(() -> {
-            while (!fixedThreadPool.isShutdown() || fixedThreadPool.getActiveCount() > 0) {
-                System.out.print(Utils.getTimeFormitted());
-                System.out.println(Utils.ANSI_YELLOW +
-                        String.format(" | [monitor] [%d/%d] Active: %d, Completed: %d, Task: %d, isShutdown: %s, isTerminated: %s",
-                                fixedThreadPool.getPoolSize(),
-                                fixedThreadPool.getCorePoolSize(),
-                                fixedThreadPool.getActiveCount(),
-                                fixedThreadPool.getCompletedTaskCount(),
-                                fixedThreadPool.getTaskCount(),
-                                fixedThreadPool.isShutdown(),
-                                fixedThreadPool.isTerminated())
-                + Utils.ANSI_RESET
-                );
-
-                try {
-                    Thread.sleep(1000 * 5);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
-
-    }
-
-    public void run(int maxThreadNum) {
+    public void run() {
         String searchUrl = initSearchUrl;
 
         FileWriter fw = null, fileWriter = null;
@@ -120,11 +90,6 @@ public class SpecLanguage {
         // which contains all the zip files
         new File(rootFolder).mkdirs();
         new File(rootFolder + "/Log").mkdirs();
-
-        // Init a thread pool
-        fixedThreadPool = new ThreadPoolExecutor(maxThreadNum, maxThreadNum,
-                0L, TimeUnit.MILLISECONDS,
-                new LinkedBlockingQueue<Runnable>());
 
         try {
             String time = Utils.getTimeFormitted();
@@ -148,8 +113,6 @@ public class SpecLanguage {
 
             // Listen for manual shutdown
             startListenExit(logFile);
-            // Start displaying thread pool info
-            startMonitor();
 
             while (running) {
                 // Reach limit

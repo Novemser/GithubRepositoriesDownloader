@@ -1,4 +1,7 @@
+package worker;
+
 import com.mashape.unirest.http.exceptions.UnirestException;
+import util.Utils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
