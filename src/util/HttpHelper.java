@@ -67,11 +67,11 @@ public class HttpHelper {
         }
     }
 
-    private static boolean testProxy(HttpHost host) {
+    public static boolean testProxy(HttpHost host) {
         try {
             Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(host.getHostName(), host.getPort()));
 
-            HttpURLConnection.setFollowRedirects(false);
+            HttpURLConnection.setFollowRedirects(true);
             HttpURLConnection con = (HttpURLConnection) new URL(limit).openConnection(proxy);
             con.setRequestMethod("GET");
 
@@ -121,7 +121,6 @@ public class HttpHelper {
     }
 
     private static void setNextProxy() {
-
         if (HttpHelper.getAvailProxyNum() > 0) {
             HttpHost host = HttpHelper.getNextAvailProxy();
             Unirest.setProxy(host);
@@ -165,7 +164,7 @@ public class HttpHelper {
                     proxyIndex++;
                 }
 
-                String urlPage = initPages[proxyIndex] + j;
+                String urlPage = initPages[proxyIndex % initPages.length] + j;
                 Document doc = Jsoup.connect(urlPage).header("User-Agent", "Mozilla/5.0 (Windows NT 6.3; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0").get();
 
 

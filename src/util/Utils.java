@@ -10,7 +10,10 @@ import org.apache.http.HttpHost;
 import org.json.JSONObject;
 
 import java.io.*;
+import java.net.Proxy;
 import java.net.URL;
+import java.nio.channels.Channels;
+import java.nio.channels.ReadableByteChannel;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -63,8 +66,8 @@ public class Utils {
 //        ReadableByteChannel rbc = Channels.newChannel(website.openStream());
 //        FileOutputStream fos = new FileOutputStream(saveFile);
 
-
-        FileUtils.copyURLToFile(website, saveFile);
+        FileUtils.copyToFile(website.openConnection(Proxy.NO_PROXY).getInputStream(), saveFile);
+//        FileUtils.copyURLToFile(website, saveFile);
 //        long offset = 0;
 //        long count;
 //        while ((count = fos.getChannel().transferFrom(rbc, offset, Long.MAX_VALUE)) > 0)
