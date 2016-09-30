@@ -60,7 +60,9 @@ public class Searcher {
                 } else {
                     long nowComplete = fixedThreadPoolMinor.getCompletedTaskCount();
 
-                    if (nowComplete - lastComplete < 83) {
+                    long delta = nowComplete - lastComplete;
+                    System.err.println("Last thread pool delta:" + delta);
+                    if (delta < 83) {
                         System.err.println("Proxy too slow, changing...");
                         HttpHelper.forceChangeProxy(fixedThreadPoolMinor);
                         System.err.println("Change proxy successfully");
