@@ -30,7 +30,12 @@ public class HttpHelper {
     private static String clientSecret = "9f1ca7fb8181eebcc27c4047f531d810718ba9bd";
     private static String limit = "https://api.github.com/rate_limit?client_id=" + clientId + "&client_secret=" + clientSecret;
     private static String ipTesting = limit;
-    private static String initPage = "http://www.xicidaili.com/nt/";
+    private static String[] initPages = {
+            "http://www.xicidaili.com/nt/",
+            "http://www.xicidaili.com/nn/",
+            "http://www.xicidaili.com/wn/",
+            "http://www.xicidaili.com/nt/"
+    };
 
     private static BlockingQueue<HttpHost> availQueue = new LinkedBlockingDeque<>();
 
@@ -150,15 +155,17 @@ public class HttpHelper {
 
     private static void produceProxy() {
         System.out.println("Start producing proxy...");
+        int proxyIndex = 0;
         try {
             for (int j = 1; j <= 2; j++) {
                 // Circuit...
                 if (j == 2) {
                     j = 1;
-                    System.out.println("Finished 100 pages. Circuiting...");
+                    System.out.println("Finished 2 pages. Circuiting...");
+                    proxyIndex++;
                 }
 
-                String urlPage = initPage + j;
+                String urlPage = initPages[proxyIndex] + j;
                 Document doc = Jsoup.connect(urlPage).header("User-Agent", "Mozilla/5.0 (Windows NT 6.3; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0").get();
 
 
