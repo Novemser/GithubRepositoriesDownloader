@@ -30,7 +30,7 @@ public class HttpHelper {
     private static String clientSecret = "9f1ca7fb8181eebcc27c4047f531d810718ba9bd";
     private static String limit = "https://api.github.com/rate_limit?client_id=" + clientId + "&client_secret=" + clientSecret;
     private static String ipTesting = limit;
-    private static String initPage = "http://www.xicidaili.com/nn/";
+    private static String initPage = "http://www.xicidaili.com/nt/";
 
     private static BlockingQueue<HttpHost> availQueue = new LinkedBlockingDeque<>();
 
@@ -44,17 +44,17 @@ public class HttpHelper {
         while (true) {
             try {
                 HttpHost host = availQueue.take();
-
+                System.err.println("Taking:" + host.getHostName() + ":" + host.getPort());
                 // Fail
-                synchronized (new Object()) {
-                    if (!testProxy(host)) {
-                        continue;
-                    }
+                if (!testProxy(host)) {
+                    System.err.println("Dropping:" + host.getHostName() + ":" + host.getPort());
+                    continue;
                 }
                 // Get next
                 // Success
                 // Add this proxy to the last position
                 availQueue.add(host);
+                System.err.println("Re-add:" + host.getHostName() + ":" + host.getPort());
                 return host;
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -84,8 +84,10 @@ public class HttpHelper {
         }
 
     }
+
     /**
      * 检查是否达到了API使用最大限制
+     *
      * @param executor 当前线程池
      * @return true:可以继续 false:不可以继续
      * @throws UnirestException 谁知道这是啥
@@ -118,7 +120,7 @@ public class HttpHelper {
         if (HttpHelper.getAvailProxyNum() > 0) {
             HttpHost host = HttpHelper.getNextAvailProxy();
             Unirest.setProxy(host);
-            System.out.println("Using another proxy:" + host.getHostName() + ":" + host.getPort());
+            System.err.println("Using another proxy:" + host.getHostName() + ":" + host.getPort());
         }
     }
 
@@ -142,16 +144,16 @@ public class HttpHelper {
         new Thread(HttpHelper::produceProxy).start();
     }
 
-    public static void main(String...args) {
+    public static void main(String... args) {
         HttpHelper.startProducing();
     }
 
     private static void produceProxy() {
         System.out.println("Start producing proxy...");
         try {
-            for (int j = 1; j <= 100; j++) {
+            for (int j = 1; j <= 2; j++) {
                 // Circuit...
-                if (j == 100) {
+                if (j == 2) {
                     j = 1;
                     System.out.println("Finished 100 pages. Circuiting...");
                 }

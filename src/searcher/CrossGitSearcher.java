@@ -21,7 +21,7 @@ import java.util.Set;
 public class CrossGitSearcher extends Searcher {
     private String clientId = "c3cdb3e20ce16b2fe446";
     private String clientSecret = "9f1ca7fb8181eebcc27c4047f531d810718ba9bd";
-    private String since = "663532";
+    private String since = "671675";
     private String initRepo = "https://api.github.com/repositories?client_id=" + clientId + "&client_secret=" + clientSecret + "&since=" + since;
 
     final static String downloadTest = "https://api.github.com/repos/octokit/octokit.rb/tarball?client_id=c3cdb3e20ce16b2fe446&client_secret=9f1ca7fb8181eebcc27c4047f531d810718ba9bd";

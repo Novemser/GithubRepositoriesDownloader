@@ -56,14 +56,17 @@ public class Searcher {
             @Override
             public void run() {
                 if (lastComplete == 0) {
-                    lastComplete = fixedThreadPoolMinor.getActiveCount();
+                    lastComplete = fixedThreadPoolMinor.getCompletedTaskCount();
                 } else {
-                    long nowActive = fixedThreadPoolMinor.getCompletedTaskCount();
-                    if (nowActive - lastComplete < 83) {
+                    long nowComplete = fixedThreadPoolMinor.getCompletedTaskCount();
+
+                    if (nowComplete - lastComplete < 83) {
                         System.err.println("Proxy too slow, changing...");
                         HttpHelper.forceChangeProxy(fixedThreadPoolMinor);
                         System.err.println("Change proxy successfully");
                     }
+
+                    lastComplete = nowComplete;
                 }
             }
         }, 0, 1000 * 60);
