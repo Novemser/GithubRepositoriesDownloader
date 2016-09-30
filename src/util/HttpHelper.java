@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.net.*;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Random;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -154,7 +155,8 @@ public class HttpHelper {
 
     private static void produceProxy() {
         System.out.println("Start producing proxy...");
-        int proxyIndex = 0;
+        int proxyIndex = new Random().nextInt() % initPages.length;
+        proxyIndex = proxyIndex > 0 ? proxyIndex : -proxyIndex;
         try {
             for (int j = 1; j <= 2; j++) {
                 // Circuit...
