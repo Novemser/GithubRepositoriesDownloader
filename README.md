@@ -15,4 +15,5 @@ Java语言实现的多线程下载器 理论上可以下载Github所有仓库的
 
 ##### By: Novemser
 ##### 2016
-##### Tongji 409 GitLab
+##### Tongji 409Lab
+##### Mail: Novemser@gmail.com
