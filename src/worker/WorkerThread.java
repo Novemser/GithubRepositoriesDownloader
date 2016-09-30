@@ -33,17 +33,17 @@ public class WorkerThread implements Runnable {
 
     @Override
     public void run() {
-        try {
-            while (!Utils.checkAPIRateLimit(executor)) {
-                Thread.sleep(1000 * 60 * 5);
-            }
-        } catch (UnirestException e) {
-            Utils.logMsgWithTime(writer, "Check api rate limit failed.");
-            System.out.println("Check api rate limit failed.");
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            while (!Utils.checkAPIRateLimit(executor)) {
+//                Thread.sleep(1000 * 60 * 5);
+//            }
+//        } catch (UnirestException e) {
+//            Utils.logMsgWithTime(writer, "Check api rate limit failed.");
+//            System.out.println("Check api rate limit failed.");
+//            e.printStackTrace();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
 
         String fileAbsName = dir.append(fullName).append(".zip").toString();
 
@@ -74,12 +74,12 @@ public class WorkerThread implements Runnable {
                 } catch (IOException e) {
                     if (e instanceof FileNotFoundException) {
                         Utils.logMsgWithTime(writer, fullName + " does not exist.");
-                        e.printStackTrace();
+                        System.err.println(fullName + " does not exist.");
                         return;
                     }
 
                     Utils.logMsgWithTime(writer, "Save " + fullName + " failed. | " + e);
-                    e.printStackTrace();
+                    System.err.println("Save " + fullName + " failed. | " + e);
                 }
             }
 

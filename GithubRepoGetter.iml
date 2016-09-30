@@ -10,5 +10,6 @@
     <orderEntry type="library" exported="" name="com.mashape.unirest:unirest-java:1.4.9" level="project" />
     <orderEntry type="library" exported="" name="commons-io-2.5-javadoc" level="project" />
     <orderEntry type="library" name="commons-io-2.5" level="project" />
+    <orderEntry type="library" name="jsoup-1.9.2" level="project" />
   </component>
 </module>

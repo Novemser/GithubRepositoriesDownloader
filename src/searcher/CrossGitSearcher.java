@@ -1,11 +1,11 @@
 package searcher;
 
-import com.mashape.unirest.http.Headers;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import com.mashape.unirest.request.GetRequest;
+import org.apache.http.HttpHost;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import util.HttpHelper;
@@ -13,11 +13,7 @@ import util.Utils;
 import worker.WorkerThread;
 
 import java.io.*;
-import java.util.List;
 import java.util.Set;
-import java.util.concurrent.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * Created by Novemser on 2016/9/25.
@@ -25,7 +21,8 @@ import java.util.regex.Pattern;
 public class CrossGitSearcher extends Searcher {
     private String clientId = "c3cdb3e20ce16b2fe446";
     private String clientSecret = "9f1ca7fb8181eebcc27c4047f531d810718ba9bd";
-    private String initRepo = "https://api.github.com/repositories?client_id=" + clientId + "&client_secret=" + clientSecret + "&since=247969";
+    private String since = "663532";
+    private String initRepo = "https://api.github.com/repositories?client_id=" + clientId + "&client_secret=" + clientSecret + "&since=" + since;
 
     final static String downloadTest = "https://api.github.com/repos/octokit/octokit.rb/tarball?client_id=c3cdb3e20ce16b2fe446&client_secret=9f1ca7fb8181eebcc27c4047f531d810718ba9bd";
 
@@ -34,6 +31,7 @@ public class CrossGitSearcher extends Searcher {
     }
 
     public void run() {
+        System.out.println(Utils.ANSI_BLUE + "Start running" + Utils.ANSI_RESET);
         String nextReposList = initRepo;
 
         FileWriter fw = null, fileWriter = null;
@@ -68,21 +66,8 @@ public class CrossGitSearcher extends Searcher {
             startListenExit(logFile);
 
             while (running) {
-                // Reach limit
-                try {
-                    while (!Utils.checkAPIRateLimit(fixedThreadPool)) {
-                        // Sleep 5 minutes
-                        Utils.logMsgWithTime(logFile, "Main loop sleep.");
-                        System.out.println(Utils.ANSI_RED + "Main loop sleep." + Utils.ANSI_RESET);
-                        Thread.sleep(1000 * 60 * 5);
-                        System.out.println(Utils.ANSI_RED + "Main loop resumed." + Utils.ANSI_RESET);
-                        Utils.logMsgWithTime(logFile, "Main loop resumed.");
-                    }
-                } catch (UnirestException | InterruptedException e) {
-                    e.printStackTrace();
-                    Utils.logMsgWithTime(logFile, "Main loop sleep Failed.");
-                    continue;
-                }
+                // Reach limit?
+                HttpHelper.checkAndSet(fixedThreadPool);
 
                 // Get repo body
                 GetRequest request = Unirest.get(nextReposList);
@@ -120,22 +105,16 @@ public class CrossGitSearcher extends Searcher {
                         PrintWriter finalPrintWriter = printWriter;
                         String finalArchiveUrl = archiveUrl;
                         fixedThreadPoolMinor.execute(() -> {
+                            // Check language
                             HttpResponse<JsonNode> jsonResponse1 = null;
                             // Reach limit?
-                            try {
-                                while (!Utils.checkAPIRateLimit(fixedThreadPool)) {
-                                    // Sleep 10 minutes
-                                    Thread.sleep(1000 * 60 * 5);
-                                }
-                            } catch (UnirestException | InterruptedException e) {
-                                e.printStackTrace();
-                                return;
-                            }
+                            HttpHelper.checkAndSet(fixedThreadPool);
 
                             try {
                                 jsonResponse1 = Unirest.get(lanUrl.toString()).asJson();
                             } catch (UnirestException e) {
-                                e.printStackTrace();
+                                HttpHelper.checkAndSet(fixedThreadPool);
+                                System.err.println("Get lan failed");
                                 return;
                             }
 

@@ -12,7 +12,6 @@ import util.Utils;
 import worker.WorkerThread;
 
 import java.io.*;
-import java.util.Scanner;
 import java.util.concurrent.*;
 
 /**
@@ -48,11 +47,16 @@ public class SpecLanguageSearcher extends Searcher {
         this.language = language;
     }
 
-    public boolean checkSearchRateLimit(ThreadPoolExecutor executor) throws UnirestException {
+    public boolean checkSearchRateLimit(ThreadPoolExecutor executor) {
         String limit = "https://api.github.com/rate_limit?client_id=" + clientId + "&client_secret=" + clientSecret;
 
         GetRequest request = Unirest.get(limit);
-        HttpResponse<JsonNode> jsonResponse = request.asJson();
+        HttpResponse<JsonNode> jsonResponse = null;
+        try {
+            jsonResponse = request.asJson();
+        } catch (UnirestException e) {
+            e.printStackTrace();
+        }
         JSONObject root = jsonResponse.getBody().getObject();
 
         JSONObject rate = root.getJSONObject("rate");
@@ -116,17 +120,10 @@ public class SpecLanguageSearcher extends Searcher {
 
             while (running) {
                 // Reach limit
-                try {
-                    while (!checkSearchRateLimit(fixedThreadPool)) {
-                        // Sleep 5 minutes
-                        Utils.logMsgWithTime(logFile, "Main loop sleep.");
-                        System.out.println(Utils.ANSI_RED + "Main loop sleep." + Utils.ANSI_RESET);
-                        Thread.sleep(1000 * 60 * 5);
-                        System.out.println(Utils.ANSI_RED + "Main loop resumed." + Utils.ANSI_RESET);
-                        Utils.logMsgWithTime(logFile, "Main loop resumed.");
-                    }
-                } catch (UnirestException | InterruptedException e) {
-                    e.printStackTrace();
+                if (!checkSearchRateLimit(fixedThreadPool)) {
+                    // Sleep 5 minutes
+                    sleepSome(logFile);
+                } else {
                     Utils.logMsgWithTime(logFile, "Main loop sleep Failed.");
                     continue;
                 }
