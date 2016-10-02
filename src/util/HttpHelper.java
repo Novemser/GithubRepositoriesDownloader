@@ -6,6 +6,7 @@ import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import com.mashape.unirest.request.GetRequest;
+import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpHost;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
@@ -13,6 +14,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.*;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -34,9 +36,12 @@ public class HttpHelper {
     private static String[] initPages = {
             "http://www.xicidaili.com/nt/",
             "http://www.xicidaili.com/nn/",
-            "http://www.xicidaili.com/wn/",
-            "http://www.xicidaili.com/nt/"
+            "http://www.mimiip.com/gngao/",
+            "http://www.mimiip.com/gnpu/",
+            "http://www.mimiip.com/gntou/"
     };
+
+    private static boolean isForceChanging;
 
     private static BlockingQueue<HttpHost> availQueue = new LinkedBlockingDeque<>();
 
@@ -121,12 +126,14 @@ public class HttpHelper {
 
     }
 
-    private static void setNextProxy() {
+    private static boolean setNextProxy() {
         if (HttpHelper.getAvailProxyNum() > 0) {
             HttpHost host = HttpHelper.getNextAvailProxy();
             Unirest.setProxy(host);
-            System.err.println("Using another proxy:" + host.getHostName() + ":" + host.getPort());
+            System.out.println(Utils.ANSI_PURPLE + "Using another proxy:" + host.getHostName() + ":" + host.getPort() + Utils.ANSI_RESET);
+            return true;
         }
+        return false;
     }
 
     public synchronized static void checkAndSet(ThreadPoolExecutor executor) {
@@ -136,8 +143,18 @@ public class HttpHelper {
     }
 
     public synchronized static void forceChangeProxy(ThreadPoolExecutor executor) {
-        setNextProxy();
-        checkAndSet(executor);
+        if (!isForceChanging)
+            new Thread(() -> {
+                isForceChanging = true;
+
+                while (!setNextProxy());
+//                checkAndSet(executor);
+                System.out.println(Utils.ANSI_GREEN + "Try changing proxy successfully" + Utils.ANSI_RESET);
+
+                isForceChanging = false;
+            }).start();
+        else
+            System.err.println("Force changing already in process...");
     }
 
 
@@ -157,51 +174,85 @@ public class HttpHelper {
         System.out.println("Start producing proxy...");
         int proxyIndex = new Random().nextInt() % initPages.length;
         proxyIndex = proxyIndex > 0 ? proxyIndex : -proxyIndex;
-        try {
-            for (int j = 1; j <= 2; j++) {
-                // Circuit...
-                if (j == 2) {
-                    j = 1;
-                    System.out.println("Finished 2 pages. Circuiting...");
-                    proxyIndex++;
+
+        for (int j = 1; j <= 2; j++) {
+            // Circuit...
+            if (j == 2) {
+                j = 1;
+                System.out.println("Finished 2 pages. Circuiting...");
+                proxyIndex++;
+            }
+
+            String urlPage = initPages[proxyIndex % initPages.length] + j;
+
+            Document doc;
+            try {
+
+                // If there is enough proxy
+                // Use one of them to craw a proxy page
+                if (availQueue.size() < 4)
+                    doc = getProxyDocument(urlPage, Proxy.NO_PROXY);
+                else {
+                    HttpHost host = getNextAvailProxy();
+                    Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(host.getHostName(), host.getPort()));
+
+                    doc = getProxyDocument(urlPage, proxy);
                 }
+            } catch (IOException e) {
+                System.err.println(e.toString());
+                continue;
+            }
 
-                String urlPage = initPages[proxyIndex % initPages.length] + j;
-                Document doc = Jsoup.connect(urlPage).header("User-Agent", "Mozilla/5.0 (Windows NT 6.3; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0").get();
+            Elements IPs, ports;
+            if (proxyIndex % initPages.length <= 1) {
+                IPs = doc.select("tbody tr:gt(0) td:eq(1)");
+                ports = doc.select("tbody tr:gt(0) td:eq(2)");
+            } else {
+                IPs = doc.select("tbody tr:gt(0) td:eq(0)");
+                ports = doc.select("tbody tr:gt(0) td:eq(1)");
+            }
 
+            if (IPs.size() == ports.size()) {
+                for (int i = 0; i < IPs.size(); i++) {
+                    String ip, port;
+                    ip = IPs.get(i).html();
+                    port = ports.get(i).html();
 
-                Elements IPs = doc.select("tbody tr:gt(0) td:eq(1)");
-                Elements ports = doc.select("tbody tr:gt(0) td:eq(2)");
+                    HttpHost tmpHost = new HttpHost(ip, Integer.parseInt(port));
 
-                if (IPs.size() == ports.size()) {
-                    for (int i = 0; i < IPs.size(); i++) {
-                        String ip, port;
-                        ip = IPs.get(i).html();
-                        port = ports.get(i).html();
-
-                        HttpHost tmpHost = new HttpHost(ip, Integer.parseInt(port));
-
-                        // Test failed
-                        if (!testProxy(tmpHost)) {
-                            System.out.println("Proxy " + ip + ":" + port + " failed.");
-                            continue;
-                        }
-
-                        availQueue.add(tmpHost);
-                        System.out.println(Utils.ANSI_GREEN + "Proxy " + ip + ":" + port + " passed." + Utils.ANSI_RESET);
+                    // Test failed
+                    if (!testProxy(tmpHost)) {
+                        System.out.println("Proxy " + ip + ":" + port + " failed.");
+                        continue;
                     }
 
+                    availQueue.add(tmpHost);
+                    System.out.println(Utils.ANSI_GREEN + "Proxy " + ip + ":" + port + " passed." + Utils.ANSI_RESET);
                 }
 
             }
-            System.out.println("Finished producing.");
 
-            for (HttpHost item : availQueue) {
-                System.out.println(item.toString());
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
+        System.out.println("Finished producing.");
+
+        for (HttpHost item : availQueue) {
+            System.out.println(item.toString());
+        }
+
+    }
+
+    private static Document getProxyDocument(String urlPage, Proxy proxy) throws IOException {
+        Document doc;
+        HttpURLConnection connection = (HttpURLConnection) new URL(urlPage).openConnection(proxy);
+        connection.setConnectTimeout(2000);
+        connection.setReadTimeout(2000);
+        connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.3; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0");
+        final InputStream inputStream = connection.getInputStream();
+        final String html = IOUtils.toString(inputStream);
+        inputStream.close();
+
+        doc = Jsoup.parse(html);
+        return doc;
     }
 
     /**

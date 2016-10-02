@@ -12,6 +12,7 @@ import org.json.JSONObject;
 import java.io.*;
 import java.net.Proxy;
 import java.net.URL;
+import java.net.URLConnection;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 import java.text.SimpleDateFormat;
@@ -63,10 +64,15 @@ public class Utils {
         URL website = new URL(url);
         // First generate a temp file
         File saveFile = new File(fileName + ".tmp");
+        URLConnection connection = website.openConnection(Proxy.NO_PROXY);
+        connection.setConnectTimeout(1000 * 10);
+        // If download time exceeds 2 hours
+        // Retry/Abort
+        connection.setReadTimeout(1000 * 60 * 60 * 2);
 //        ReadableByteChannel rbc = Channels.newChannel(website.openStream());
 //        FileOutputStream fos = new FileOutputStream(saveFile);
 
-        FileUtils.copyToFile(website.openConnection(Proxy.NO_PROXY).getInputStream(), saveFile);
+        FileUtils.copyToFile(connection.getInputStream(), saveFile);
 //        FileUtils.copyURLToFile(website, saveFile);
 //        long offset = 0;
 //        long count;

@@ -22,25 +22,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CrossGitSearcher.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CrossGitSearcher.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/searcher/CrossGitSearcher.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1188">
-              <caret line="69" column="37" selection-start-line="69" selection-start-column="37" selection-end-line="69" selection-end-column="37" />
+            <state relative-caret-position="625">
+              <caret line="51" column="43" selection-start-line="51" selection-start-column="43" selection-end-line="51" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1096#1097#0" expanded="true" />
-                <element signature="e#1128#1129#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FileDownload.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/FileDownload.java">
+      <file leaf-file-name="SpecLanguageSearcher.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/searcher/SpecLanguageSearcher.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
+            <state relative-caret-position="528">
+              <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -51,8 +49,8 @@
       <file leaf-file-name="Utils.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/util/Utils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
-              <caret line="69" column="53" selection-start-line="69" selection-start-column="53" selection-end-line="69" selection-end-column="53" />
+            <state relative-caret-position="450">
+              <caret line="77" column="21" selection-start-line="77" selection-start-column="21" selection-end-line="77" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -60,15 +58,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HttpHelper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/util/HttpHelper.java">
+      <file leaf-file-name="FileDownload.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/FileDownload.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="143" column="22" selection-start-line="143" selection-start-column="22" selection-end-line="143" selection-end-column="22" />
+            <state relative-caret-position="396">
+              <caret line="21" column="35" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4853#4854#0" expanded="true" />
-                <element signature="e#4893#4894#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HttpHelper.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/util/HttpHelper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2794">
+              <caret line="146" column="30" selection-start-line="146" selection-start-column="30" selection-end-line="146" selection-end-column="30" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -77,9 +85,32 @@
       <file leaf-file-name="Searcher.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/searcher/Searcher.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="42" column="31" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="31" />
+            <state relative-caret-position="378">
+              <caret line="74" column="40" selection-start-line="74" selection-start-column="40" selection-end-line="74" selection-end-column="40" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Provider.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/util/proxyprovider/Provider.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="220">
+              <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="XiciDaili.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/util/proxyprovider/XiciDaili.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="242">
+              <caret line="11" column="12" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
+              <folding>
+                <element signature="e#431#432#0" expanded="true" />
+                <element signature="e#458#459#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -87,8 +118,8 @@
       <file leaf-file-name="WorkerThread.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/worker/WorkerThread.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
-              <caret line="66" column="26" selection-start-line="66" selection-start-column="26" selection-end-line="66" selection-end-column="26" />
+            <state relative-caret-position="484">
+              <caret line="22" column="34" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -101,6 +132,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -123,13 +155,20 @@
         <option value="$PROJECT_DIR$/src/SpecLanguageSearcher.java" />
         <option value="$PROJECT_DIR$/src/CrossGitSearcher.java" />
         <option value="$PROJECT_DIR$/src/app/Main.java" />
-        <option value="$PROJECT_DIR$/src/searcher/SpecLanguageSearcher.java" />
         <option value="$PROJECT_DIR$/src/worker/WorkerThread.java" />
-        <option value="$PROJECT_DIR$/src/util/Utils.java" />
+        <option value="$PROJECT_DIR$/src/test/Proxy.java" />
+        <option value="$PROJECT_DIR$/src/searcher/SpecLanguageSearcher.java" />
+        <option value="$USER_HOME$/Desktop/Circulation/src/cn/edu/usst/jx/circulation.java" />
+        <option value="$PROJECT_DIR$/src/test/Circluation.java" />
+        <option value="$PROJECT_DIR$/src/test/Circulation.java" />
+        <option value="$PROJECT_DIR$/src/util/proxyprovider/Provider.java" />
+        <option value="$PROJECT_DIR$/src/util/proxyprovider/XiciDaili.java" />
+        <option value="$PROJECT_DIR$/src/util/proxyprovider/MimiIp.java" />
+        <option value="$PROJECT_DIR$/src/searcher/CrossGitSearcher.java" />
         <option value="$PROJECT_DIR$/src/test/FileDownload.java" />
+        <option value="$PROJECT_DIR$/src/util/Utils.java" />
         <option value="$PROJECT_DIR$/src/searcher/Searcher.java" />
         <option value="$PROJECT_DIR$/src/util/HttpHelper.java" />
-        <option value="$PROJECT_DIR$/src/searcher/CrossGitSearcher.java" />
       </list>
     </option>
   </component>
@@ -178,8 +217,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -248,6 +285,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="proxyprovider" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GithubRepoGetter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GithubRepoGetter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -290,6 +349,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -301,7 +362,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="fileTemplates" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/jsoup-1.9.2.jar!/" />
     <property name="extract.method.default.visibility" value="private" />
@@ -313,41 +374,6 @@
       <option name="VM_PARAMETERS" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="GithubRepoGetter" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="SpecLanguageSearcher" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="searcher.SpecLanguageSearcher" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="GithubRepoGetter" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="CrossGitSearcher (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="searcher.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="searcher.CrossGitSearcher" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="ENABLE_SWING_INSPECTOR" value="false" />
@@ -385,6 +411,46 @@
         </pattern>
       </extension>
       <option name="MAIN_CLASS_NAME" value="test.FileDownload" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="GithubRepoGetter" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="Proxy" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="test.Proxy" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="GithubRepoGetter" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="Circulation" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="test.Circulation" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -766,18 +832,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Application.CrossGitSearcher" />
-      <item index="1" class="java.lang.String" itemvalue="Application.SpecLanguageSearcher" />
-      <item index="2" class="java.lang.String" itemvalue="Application.CrossGitSearcher (1)" />
-      <item index="3" class="java.lang.String" itemvalue="Application.HttpHelper" />
-      <item index="4" class="java.lang.String" itemvalue="Application.FileDownload" />
+      <item index="1" class="java.lang.String" itemvalue="Application.HttpHelper" />
+      <item index="2" class="java.lang.String" itemvalue="Application.FileDownload" />
+      <item index="3" class="java.lang.String" itemvalue="Application.Proxy" />
+      <item index="4" class="java.lang.String" itemvalue="Application.Circulation" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Application.CrossGitSearcher" />
         <item index="1" class="java.lang.String" itemvalue="Application.FileDownload" />
-        <item index="2" class="java.lang.String" itemvalue="Application.HttpHelper" />
-        <item index="3" class="java.lang.String" itemvalue="Application.SpecLanguageSearcher" />
-        <item index="4" class="java.lang.String" itemvalue="Application.CrossGitSearcher (1)" />
+        <item index="2" class="java.lang.String" itemvalue="Application.Circulation" />
+        <item index="3" class="java.lang.String" itemvalue="Application.Proxy" />
+        <item index="4" class="java.lang.String" itemvalue="Application.HttpHelper" />
       </list>
     </recent_temporary>
   </component>
@@ -786,15 +852,15 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3280757" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3271028" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34371755" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27102804" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13006397" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -832,157 +898,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/util/Utils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1496">
-          <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/worker/WorkerThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1254">
-          <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/searcher/CrossGitSearcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1096#1097#0" expanded="true" />
-            <element signature="e#1128#1129#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/util/regex/Matcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10868">
-          <caret line="494" column="18" selection-start-line="494" selection-start-column="18" selection-end-line="494" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/lang/String.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="31372">
-          <caret line="1489" column="15" selection-start-line="1489" selection-start-column="15" selection-end-line="1489" selection-end-column="15" />
-          <folding>
-            <element signature="e#0#123975#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#4677#4678#0" expanded="false" />
-            <element signature="e#4717#4718#0" expanded="false" />
-            <element signature="e#5690#5691#0" expanded="false" />
-            <element signature="e#5753#5754#0" expanded="false" />
-            <element signature="e#12762#12763#0" expanded="false" />
-            <element signature="e#12814#12815#0" expanded="false" />
-            <element signature="e#18445#18446#0" expanded="false" />
-            <element signature="e#18498#18499#0" expanded="false" />
-            <element signature="e#20391#20392#0" expanded="false" />
-            <element signature="e#20435#20436#0" expanded="false" />
-            <element signature="e#21625#21626#0" expanded="false" />
-            <element signature="e#21705#21706#0" expanded="false" />
-            <element signature="e#22450#22451#0" expanded="false" />
-            <element signature="e#22485#22486#0" expanded="false" />
-            <element signature="e#22736#22737#0" expanded="false" />
-            <element signature="e#22776#22777#0" expanded="false" />
-            <element signature="e#29126#29127#0" expanded="false" />
-            <element signature="e#29197#29198#0" expanded="false" />
-            <element signature="e#36057#36058#0" expanded="false" />
-            <element signature="e#36123#36124#0" expanded="false" />
-            <element signature="e#38033#38034#0" expanded="false" />
-            <element signature="e#38087#38088#0" expanded="false" />
-            <element signature="e#47202#47203#0" expanded="false" />
-            <element signature="e#47266#47267#0" expanded="false" />
-            <element signature="e#55464#55465#0" expanded="false" />
-            <element signature="e#55508#55509#0" expanded="false" />
-            <element signature="e#56101#56102#0" expanded="false" />
-            <element signature="e#56178#56179#0" expanded="false" />
-            <element signature="e#62524#62525#0" expanded="false" />
-            <element signature="e#62580#62581#0" expanded="false" />
-            <element signature="e#66121#66122#0" expanded="false" />
-            <element signature="e#66159#66160#0" expanded="false" />
-            <element signature="e#70413#70414#0" expanded="false" />
-            <element signature="e#70466#70467#0" expanded="false" />
-            <element signature="e#77904#77905#0" expanded="false" />
-            <element signature="e#77963#77964#0" expanded="false" />
-            <element signature="e#82280#82281#0" expanded="false" />
-            <element signature="e#82331#82332#0" expanded="false" />
-            <element signature="e#82635#82636#0" expanded="false" />
-            <element signature="e#82684#82685#0" expanded="false" />
-            <element signature="e#94262#94263#0" expanded="false" />
-            <element signature="e#94300#94301#0" expanded="false" />
-            <element signature="e#104339#104340#0" expanded="false" />
-            <element signature="e#104394#104395#0" expanded="false" />
-            <element signature="e#110860#110861#0" expanded="false" />
-            <element signature="e#110915#110916#0" expanded="false" />
-            <element signature="e#113007#113008#0" expanded="false" />
-            <element signature="e#113034#113035#0" expanded="false" />
-            <element signature="e#117557#117558#0" expanded="false" />
-            <element signature="e#117619#117620#0" expanded="false" />
-            <element signature="e#118069#118070#0" expanded="false" />
-            <element signature="e#118108#118109#0" expanded="false" />
-            <element signature="e#119120#119121#0" expanded="false" />
-            <element signature="e#119174#119175#0" expanded="false" />
-            <element signature="e#119823#119824#0" expanded="false" />
-            <element signature="e#119877#119878#0" expanded="false" />
-            <element signature="e#120146#120147#0" expanded="false" />
-            <element signature="e#120185#120186#0" expanded="false" />
-            <element signature="e#120553#120554#0" expanded="false" />
-            <element signature="e#120596#120597#0" expanded="false" />
-            <element signature="e#121391#121392#0" expanded="false" />
-            <element signature="e#121433#121434#0" expanded="false" />
-            <element signature="e#121848#121849#0" expanded="false" />
-            <element signature="e#121887#121888#0" expanded="false" />
-            <element signature="e#122309#122310#0" expanded="false" />
-            <element signature="e#122349#122350#0" expanded="false" />
-            <element signature="e#122779#122780#0" expanded="false" />
-            <element signature="e#122820#122821#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/searcher/CrossGitSearcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1096#1097#0" expanded="true" />
-            <element signature="e#1128#1129#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/mashape/unirest/unirest-java/1.4.9/unirest-java-1.4.9.jar!/com/mashape/unirest/request/HttpRequest.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2552">
-          <caret line="141" column="16" selection-start-line="141" selection-start-column="16" selection-end-line="141" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/mashape/unirest/unirest-java/1.4.9/unirest-java-1.4.9.jar!/com/mashape/unirest/request/BaseRequest.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="39" column="71" selection-start-line="39" selection-start-column="71" selection-end-line="39" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/util/HashMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="553" column="12" selection-start-line="553" selection-start-column="12" selection-end-line="553" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/json/json/20160212/json-20160212.jar!/org/json/JSONObject.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="241">
@@ -1001,10 +916,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="237">
           <caret line="107" column="6" selection-start-line="107" selection-start-column="6" selection-end-line="107" selection-end-column="6" />
-          <folding>
-            <element signature="e#2871#2872#0" expanded="false" />
-            <element signature="e#2896#2897#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1119,7 +1030,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="139">
           <caret line="744" column="0" selection-start-line="744" selection-start-column="0" selection-end-line="744" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1127,19 +1037,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
           <caret line="1279" column="0" selection-start-line="1279" selection-start-column="0" selection-end-line="1279" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/lang/Throwable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="480" column="39" selection-start-line="480" selection-start-column="39" selection-end-line="480" selection-end-column="39" />
-          <folding>
-            <element signature="e#26222#26223#0" expanded="false" />
-            <element signature="e#26265#26266#0" expanded="false" />
-            <element signature="e#26470#26471#0" expanded="false" />
-            <element signature="e#26528#26529#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1154,10 +1051,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
           <caret line="1141" column="0" selection-start-line="1141" selection-start-column="0" selection-end-line="1141" selection-end-column="0" />
-          <folding>
-            <element signature="e#25063#25064#0" expanded="false" />
-            <element signature="e#25102#25103#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1211,18 +1104,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/jsoup-1.9.2.jar!/org/jsoup/Connection.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="67" column="13" selection-start-line="67" selection-start-column="13" selection-end-line="67" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/util/concurrent/BlockingQueue.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="336">
           <caret line="257" column="6" selection-start-line="257" selection-start-column="6" selection-end-line="257" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1245,17 +1130,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
           <caret line="464" column="15" selection-start-line="464" selection-start-column="15" selection-end-line="464" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/searcher/SpecLanguageSearcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="457">
-          <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1263,10 +1137,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3420">
           <caret line="248" column="11" selection-start-line="248" selection-start-column="11" selection-end-line="248" selection-end-column="11" />
-          <folding>
-            <element signature="e#7388#7389#0" expanded="false" />
-            <element signature="e#7427#7428#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1274,7 +1144,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="402">
           <caret line="38" column="47" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="47" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1282,10 +1151,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
           <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
-          <folding>
-            <element signature="e#358#359#0" expanded="true" />
-            <element signature="e#392#393#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1293,7 +1158,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="181">
           <caret line="650" column="41" selection-start-line="650" selection-start-column="41" selection-end-line="650" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1301,7 +1165,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="328">
           <caret line="94" column="28" selection-start-line="94" selection-start-column="28" selection-end-line="94" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1309,7 +1172,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="296">
           <caret line="74" column="13" selection-start-line="74" selection-start-column="13" selection-end-line="74" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1333,7 +1195,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="186">
           <caret line="47" column="23" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1341,17 +1202,108 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
           <caret line="327" column="15" selection-start-line="327" selection-start-column="15" selection-end-line="327" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/jsoup-1.9.2.jar!/org/jsoup/Connection.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="27" column="15" selection-start-line="27" selection-start-column="15" selection-end-line="27" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/lang/Throwable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="477" column="18" selection-start-line="477" selection-start-column="18" selection-end-line="477" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/Proxy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="19" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/Circulation/src/cn/edu/usst/jx/circulation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="18" column="16" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/math/BigDecimal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="1078" column="18" selection-start-line="1078" selection-start-column="18" selection-end-line="1078" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/HZ$D.497.4133/circulation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="21" column="28" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/Circulation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
           <folding>
-            <element signature="e#11985#11986#0" expanded="true" />
-            <element signature="e#12016#12017#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/util/Utils.java">
+    <entry file="file://$PROJECT_DIR$/src/util/proxyprovider/MimiIp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="69" column="53" selection-start-line="69" selection-start-column="53" selection-end-line="69" selection-end-column="53" />
+        <state relative-caret-position="506">
+          <caret line="23" column="30" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#551#552#0" expanded="true" />
+            <element signature="e#599#600#0" expanded="true" />
+            <element signature="e#626#627#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/util/proxyprovider/XiciDaili.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="12" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
+          <folding>
+            <element signature="e#431#432#0" expanded="true" />
+            <element signature="e#458#459#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/searcher/CrossGitSearcher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="625">
+          <caret line="51" column="43" selection-start-line="51" selection-start-column="43" selection-end-line="51" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/util/proxyprovider/Provider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/searcher/SpecLanguageSearcher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1360,8 +1312,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/worker/WorkerThread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="66" column="26" selection-start-line="66" selection-start-column="26" selection-end-line="66" selection-end-column="26" />
+        <state relative-caret-position="484">
+          <caret line="22" column="34" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/util/Timer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="322" column="16" selection-start-line="322" selection-start-column="16" selection-end-line="322" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/util/Utils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="77" column="21" selection-start-line="77" selection-start-column="21" selection-end-line="77" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1370,8 +1340,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/FileDownload.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
+        <state relative-caret-position="396">
+          <caret line="21" column="35" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1380,32 +1350,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/searcher/Searcher.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="42" column="31" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="31" />
+        <state relative-caret-position="378">
+          <caret line="74" column="40" selection-start-line="74" selection-start-column="40" selection-end-line="74" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/util/HttpHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="143" column="22" selection-start-line="143" selection-start-column="22" selection-end-line="143" selection-end-column="22" />
+        <state relative-caret-position="2794">
+          <caret line="146" column="30" selection-start-line="146" selection-start-column="30" selection-end-line="146" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4853#4854#0" expanded="true" />
-            <element signature="e#4893#4894#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/searcher/CrossGitSearcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1188">
-          <caret line="69" column="37" selection-start-line="69" selection-start-column="37" selection-end-line="69" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1096#1097#0" expanded="true" />
-            <element signature="e#1128#1129#0" expanded="true" />
           </folding>
         </state>
       </provider>

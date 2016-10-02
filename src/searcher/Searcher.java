@@ -1,6 +1,7 @@
 package searcher;
 
 import com.mashape.unirest.http.Unirest;
+import com.sun.org.apache.xerces.internal.impl.xs.identity.UniqueOrKey;
 import org.apache.http.HttpHost;
 import util.HttpHelper;
 import util.Utils;
@@ -14,12 +15,16 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * GithubRepoGetter
+ *
  * Created by Novemser on 2016/9/29.
  */
-public class Searcher {
+abstract class Searcher {
     protected ThreadPoolExecutor fixedThreadPool;
     protected ThreadPoolExecutor fixedThreadPoolMinor;
     protected boolean running;
+    protected String clientId = "c3cdb3e20ce16b2fe446";
+    protected String clientSecret = "9f1ca7fb8181eebcc27c4047f531d810718ba9bd";
     final static String rootFolder = "D:/GithubCodes";
 
     public Searcher(int maxThread) {
@@ -41,6 +46,7 @@ public class Searcher {
         HttpHost host = HttpHelper.getNextAvailProxy();
         System.out.println("Init using " + host.getHostName() + ":" + host.getPort());
         Unirest.setProxy(host);
+        Unirest.setTimeouts(5000, 1000 * 10);
 
         // Listen that if the proxy is too slow
         // Then change another
@@ -52,10 +58,12 @@ public class Searcher {
 
         timer.scheduleAtFixedRate(new TimerTask() {
             long lastComplete = 0;
+            int zeroCnt = 0;
 
             @Override
             public void run() {
-                if (lastComplete == 0) {
+                if (lastComplete == 0 && zeroCnt < 10) {
+                    zeroCnt++;
                     lastComplete = fixedThreadPoolMinor.getCompletedTaskCount();
                 } else {
                     long nowComplete = fixedThreadPoolMinor.getCompletedTaskCount();
@@ -65,7 +73,6 @@ public class Searcher {
                     if (delta < 50) {
                         System.err.println("Proxy too slow, changing...");
                         HttpHelper.forceChangeProxy(fixedThreadPoolMinor);
-                        System.err.println("Change proxy successfully");
                     }
 
                     lastComplete = nowComplete;

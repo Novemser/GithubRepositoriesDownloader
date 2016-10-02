@@ -14,21 +14,20 @@ import java.net.URLConnection;
  */
 public class FileDownload {
     public static void main(String...args) throws InterruptedException {
-        ProxySelector defaults = ProxySelector.getDefault();
+//        ProxySelector defaults = ProxySelector.getDefault();
+//
+//        HttpHost host = new HttpHost("218.102.23.83", 8080);
+//        Unirest.setProxy(host);
+//        boolean flag = HttpHelper.testProxy(host);
+//        System.out.println(flag);
 
-        HttpHost host = new HttpHost("218.102.23.83", 8080);
-        Unirest.setProxy(host);
-        boolean flag = HttpHelper.testProxy(host);
-        System.out.println(flag);
 
-
-        String name = "D:/GithubCodes/Java/karlbennett_debug.zip";
+        String name = "D:/Test/karlbennett_debug.zip";
         String url = "https://api.github.com/repos/karlbennett/debug/zipball?client_id=c3cdb3e20ce16b2fe446&client_secret=9f1ca7fb8181eebcc27c4047f531d810718ba9bd";
         try {
             Utils.saveZipToFile(name, url);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Thread.sleep(10000);
     }
 }

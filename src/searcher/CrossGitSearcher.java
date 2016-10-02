@@ -19,12 +19,10 @@ import java.util.Set;
  * Created by Novemser on 2016/9/25.
  */
 public class CrossGitSearcher extends Searcher {
-    private String clientId = "c3cdb3e20ce16b2fe446";
-    private String clientSecret = "9f1ca7fb8181eebcc27c4047f531d810718ba9bd";
-    private String since = "7671675";
+    private String since = "1851513";
     private String initRepo = "https://api.github.com/repositories?client_id=" + clientId + "&client_secret=" + clientSecret + "&since=" + since;
 
-    final static String downloadTest = "https://api.github.com/repos/octokit/octokit.rb/tarball?client_id=c3cdb3e20ce16b2fe446&client_secret=9f1ca7fb8181eebcc27c4047f531d810718ba9bd";
+//    final static String downloadTest = "https://api.github.com/repos/octokit/octokit.rb/tarball?client_id=c3cdb3e20ce16b2fe446&client_secret=9f1ca7fb8181eebcc27c4047f531d810718ba9bd";
 
     public CrossGitSearcher(int maxThread) {
         super(maxThread);
@@ -46,12 +44,12 @@ public class CrossGitSearcher extends Searcher {
         try {
             String time = Utils.getTimeFormitted();
 
-            fw = new FileWriter(rootFolder + "/Log/log-" + time + ".txt", true);
+            fw = new FileWriter(rootFolder + "/Log/log-" + "since-" + since + "-" + time + ".txt", true);
             bw = new BufferedWriter(fw);
             logFile = new PrintWriter(bw);
             Utils.log = logFile;
 
-            fileWriter = new FileWriter(rootFolder + "/Log/Repos-" + time + ".txt", true);
+            fileWriter = new FileWriter(rootFolder + "/Log/Repositories-" + time + ".txt", true);
             bufferedWriter = new BufferedWriter(fileWriter);
             printWriter = new PrintWriter(bufferedWriter);
 
