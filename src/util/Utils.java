@@ -62,8 +62,12 @@ public class Utils {
 
     public static void saveZipToFile(String fileName, String url) throws IOException {
         URL website = new URL(url);
+
         // First generate a temp file
         File saveFile = new File(fileName + ".tmp");
+        if (saveFile.exists())
+            saveFile.delete();
+
         URLConnection connection = website.openConnection(Proxy.NO_PROXY);
         connection.setConnectTimeout(1000 * 10);
         // If download time exceeds 2 hours
@@ -72,7 +76,12 @@ public class Utils {
 //        ReadableByteChannel rbc = Channels.newChannel(website.openStream());
 //        FileOutputStream fos = new FileOutputStream(saveFile);
 
-        FileUtils.copyToFile(connection.getInputStream(), saveFile);
+        try {
+            FileUtils.copyToFile(connection.getInputStream(), saveFile);
+        } catch (IOException e) {
+            saveFile.delete();
+            throw new IOException(e);
+        }
 //        FileUtils.copyURLToFile(website, saveFile);
 //        long offset = 0;
 //        long count;
@@ -81,7 +90,11 @@ public class Utils {
 //            offset += count;
 //        }
         // If succeed, change to the desired name
-        if (!saveFile.renameTo(new File(fileName))) {
+        File dest = new File(fileName);
+        if (dest.exists())
+            dest.delete();
+
+        if (!saveFile.renameTo(dest)) {
             saveFile.delete();
             throw new IOException("Rename file failed!");
         }

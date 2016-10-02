@@ -22,6 +22,7 @@ import java.util.Random;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -73,6 +74,27 @@ public class HttpHelper {
         }
     }
 
+    public static HttpHost tryTakeNextProxy(int milliseconds) {
+        try {
+            HttpHost host = availQueue.poll(milliseconds, TimeUnit.MILLISECONDS);
+            System.err.println("Taking:" + host.getHostName() + ":" + host.getPort());
+            // Fail
+            if (!testProxy(host)) {
+                System.err.println("Dropping:" + host.getHostName() + ":" + host.getPort());
+                return null;
+            }
+            // Get next
+            // Success
+            // Add this proxy to the last position
+            availQueue.add(host);
+            System.err.println("Re-add:" + host.getHostName() + ":" + host.getPort());
+            return host;
+        } catch (InterruptedException e) {
+            System.err.println("Not enough proxy, use localhost instead.");
+            return null;
+        }
+    }
+
     public static boolean testProxy(HttpHost host) {
         try {
             Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(host.getHostName(), host.getPort()));
@@ -103,7 +125,7 @@ public class HttpHelper {
      * @return true:可以继续 false:不可以继续
      * @throws UnirestException 谁知道这是啥
      */
-    public synchronized static boolean checkAPIRateLimit(ThreadPoolExecutor executor) {
+    public static boolean checkAPIRateLimit(ThreadPoolExecutor executor) {
         GetRequest request = Unirest.get(limit);
 
         try {
@@ -142,12 +164,12 @@ public class HttpHelper {
         }
     }
 
-    public synchronized static void forceChangeProxy(ThreadPoolExecutor executor) {
+    public static void forceChangeProxy(ThreadPoolExecutor executor) {
         if (!isForceChanging)
             new Thread(() -> {
                 isForceChanging = true;
 
-                while (!setNextProxy());
+                while (!setNextProxy()) ;
 //                checkAndSet(executor);
                 System.out.println(Utils.ANSI_GREEN + "Try changing proxy successfully" + Utils.ANSI_RESET);
 
@@ -190,16 +212,22 @@ public class HttpHelper {
 
                 // If there is enough proxy
                 // Use one of them to craw a proxy page
-                if (availQueue.size() < 4)
+                if (availQueue.size() < 5)
                     doc = getProxyDocument(urlPage, Proxy.NO_PROXY);
                 else {
-                    HttpHost host = getNextAvailProxy();
+                    HttpHost host = tryTakeNextProxy(1000);
+                    if (host == null) {
+                        j--;
+                        continue;
+                    }
+
                     Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(host.getHostName(), host.getPort()));
 
                     doc = getProxyDocument(urlPage, proxy);
                 }
             } catch (IOException e) {
                 System.err.println(e.toString());
+                j--;
                 continue;
             }
 

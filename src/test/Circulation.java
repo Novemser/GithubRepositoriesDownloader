@@ -1,5 +1,7 @@
 package test;
 
+import util.HttpHelper;
+
 import java.math.BigDecimal;
 import java.util.Scanner;
 
@@ -12,6 +14,7 @@ public class Circulation {
 
     public static void main(String[] args) {
         // TODO Auto-generated method stub
+
         double e1 = 0, e, sum = 1;
         int x, n = 1;
         Scanner input = new Scanner(System.in);

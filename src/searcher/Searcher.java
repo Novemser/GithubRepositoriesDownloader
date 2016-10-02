@@ -87,6 +87,8 @@ abstract class Searcher {
             if (scanner.hasNext()) {
                 running = false;
                 System.err.println("Downloading stopped.");
+                fixedThreadPoolMinor.shutdown();
+                fixedThreadPool.shutdown();
                 Utils.logMsgWithTime(writer, "Manually stop downloading.");
             }
         }).start();
