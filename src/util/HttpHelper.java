@@ -12,6 +12,7 @@ import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+import searcher.Searcher;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -158,9 +159,18 @@ public class HttpHelper {
         return false;
     }
 
-    public synchronized static void checkAndSet(ThreadPoolExecutor executor) {
+    public synchronized static void checkAndSet(ThreadPoolExecutor executor, Searcher searcher) {
         while (!checkAPIRateLimit(executor)) {
-            setNextProxy();
+            if (searcher.isUsingProxy()) {
+                setNextProxy();
+            }
+            else {
+                try {
+                    Thread.sleep(1000 * 60);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 

@@ -19,7 +19,7 @@ import java.util.Set;
  * Created by Novemser on 2016/9/25.
  */
 public class CrossGitSearcher extends Searcher {
-    private String since = "2710853";
+    private String since = "3690558";
     private String initRepo = "https://api.github.com/repositories?client_id=" + clientId + "&client_secret=" + clientSecret + "&since=" + since;
 
 //    final static String downloadTest = "https://api.github.com/repos/octokit/octokit.rb/tarball?client_id=c3cdb3e20ce16b2fe446&client_secret=9f1ca7fb8181eebcc27c4047f531d810718ba9bd";
@@ -65,7 +65,7 @@ public class CrossGitSearcher extends Searcher {
 
             while (running) {
                 // Reach limit?
-                HttpHelper.checkAndSet(fixedThreadPool);
+                HttpHelper.checkAndSet(fixedThreadPool, this);
 
                 // Get repo body
                 GetRequest request = Unirest.get(nextReposList);
@@ -106,12 +106,12 @@ public class CrossGitSearcher extends Searcher {
                             // Check language
                             HttpResponse<JsonNode> jsonResponse1 = null;
                             // Reach limit?
-                            HttpHelper.checkAndSet(fixedThreadPool);
+                            HttpHelper.checkAndSet(fixedThreadPool, this);
 
                             try {
                                 jsonResponse1 = Unirest.get(lanUrl.toString()).asJson();
                             } catch (UnirestException e) {
-                                HttpHelper.checkAndSet(fixedThreadPool);
+                                HttpHelper.checkAndSet(fixedThreadPool, this);
                                 System.err.println("Get lan failed");
                                 return;
                             }
@@ -184,6 +184,7 @@ public class CrossGitSearcher extends Searcher {
 
     public static void main(String... args) {
         CrossGitSearcher main = new CrossGitSearcher(5000);
+        main.usingProxy();
         main.run();
     }
 }

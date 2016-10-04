@@ -29,8 +29,6 @@ public class SpecLanguageSearcher extends Searcher {
     private String initSearchUrl;
     private String rootFolder = "D:/GithubSearchCodes";
     private String language;
-    private boolean running;
-    private ThreadPoolExecutor fixedThreadPool;
     private int maxActiveCnt = 500;
 
     public SpecLanguageSearcher(String language, int maxThread) {
@@ -83,6 +81,7 @@ public class SpecLanguageSearcher extends Searcher {
         return flag && fg && ac;
     }
 
+
     public void run() {
         String searchUrl = initSearchUrl;
 
@@ -123,9 +122,6 @@ public class SpecLanguageSearcher extends Searcher {
                 if (!checkSearchRateLimit(fixedThreadPool)) {
                     // Sleep 5 minutes
                     sleepSome(logFile);
-                } else {
-                    Utils.logMsgWithTime(logFile, "Main loop sleep Failed.");
-                    continue;
                 }
 
                 HttpResponse<JsonNode> response = null;
@@ -174,7 +170,7 @@ public class SpecLanguageSearcher extends Searcher {
             }
         } catch (IOException e) {
             if (logFile != null)
-                Utils.logMsgWithTime(logFile, "Error terminated:" + e.getMessage());
+                Utils.logMsgWithTime(logFile, "Error terminated:" + e);
             e.printStackTrace();
 
             if (logFile != null) {

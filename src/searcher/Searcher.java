@@ -19,13 +19,22 @@ import java.util.concurrent.TimeUnit;
  *
  * Created by Novemser on 2016/9/29.
  */
-abstract class Searcher {
+public abstract class Searcher {
     protected ThreadPoolExecutor fixedThreadPool;
     protected ThreadPoolExecutor fixedThreadPoolMinor;
     protected boolean running;
     protected String clientId = "c3cdb3e20ce16b2fe446";
     protected String clientSecret = "9f1ca7fb8181eebcc27c4047f531d810718ba9bd";
     final static String rootFolder = "D:/GithubCodes";
+    private boolean isUsingProxy;
+
+    public boolean isUsingProxy() {
+        return isUsingProxy;
+    }
+
+    public void usingProxy() {
+        isUsingProxy = true;
+    }
 
     public Searcher(int maxThread) {
 
@@ -33,24 +42,29 @@ abstract class Searcher {
         fixedThreadPool = new ThreadPoolExecutor(maxThread, maxThread,
                 0L, TimeUnit.MILLISECONDS,
                 new LinkedBlockingQueue<Runnable>());
+        startMonitor(fixedThreadPool);
+
         fixedThreadPoolMinor = new ThreadPoolExecutor(maxThread / 2, maxThread / 2,
                 0L, TimeUnit.MILLISECONDS,
                 new LinkedBlockingQueue<Runnable>());
-        startMonitor(fixedThreadPool);
         startMonitor(fixedThreadPoolMinor);
 
-        // Start...
-        HttpHelper.startProducing();
+        if (isUsingProxy) {
+            // Start...
+            HttpHelper.startProducing();
 
-        // Use proxy to craw unimportant information
-        HttpHost host = HttpHelper.getNextAvailProxy();
-        System.out.println("Init using " + host.getHostName() + ":" + host.getPort());
-        Unirest.setProxy(host);
-        Unirest.setTimeouts(5000, 1000 * 10);
+            // Use proxy to craw unimportant information
+            HttpHost host = HttpHelper.getNextAvailProxy();
+            System.out.println("Init using " + host.getHostName() + ":" + host.getPort());
+            Unirest.setProxy(host);
+            Unirest.setTimeouts(5000, 1000 * 10);
 
-        // Listen that if the proxy is too slow
-        // Then change another
-        listenAndChange();
+            // Listen that if the proxy is too slow
+            // Then change another
+            listenAndChange();
+        }
+
+
     }
 
     private void listenAndChange() {
@@ -81,7 +95,7 @@ abstract class Searcher {
         }, 0, 1000 * 60);
     }
 
-    protected void startListenExit(PrintWriter writer) {
+    void startListenExit(PrintWriter writer) {
         new Thread(() -> {
             Scanner scanner = new Scanner(System.in);
             if (scanner.hasNext()) {
@@ -94,7 +108,13 @@ abstract class Searcher {
         }).start();
     }
 
-    protected void startMonitor(ThreadPoolExecutor executor) {
+    /**
+     * Run the crawler
+     *
+     */
+    public abstract void run();
+
+    private void startMonitor(ThreadPoolExecutor executor) {
         new Thread(() -> {
             while (!executor.isShutdown() || executor.getActiveCount() > 0) {
                 synchronized (this) {
@@ -126,7 +146,7 @@ abstract class Searcher {
 
     }
 
-    protected void sleepSome(PrintWriter logFile)  {
+    void sleepSome(PrintWriter logFile)  {
         Utils.logMsgWithTime(logFile, "Main loop sleep.");
         System.out.println(Utils.ANSI_RED + "Main loop sleep." + Utils.ANSI_RESET);
         try {
